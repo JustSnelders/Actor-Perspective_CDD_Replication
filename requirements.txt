@@ -1,0 +1,15 @@
+# Python 3.13.12 (Windows 11). Versions used for the reported replication run.
+promg==1.0.10
+pandas==3.0.1
+numpy==2.5.1
+scikit-learn==1.8.0
+scipy==1.17.1
+ruptures==1.1.10
+neo4j==6.4.0
+PyYAML==6.0.3
+tabulate==0.10.0
+tqdm==4.68.4
+matplotlib==3.10.8
+graphviz==0.21
+pydot==4.0.1
+colorama==0.4.6
