@@ -1,0 +1,8 @@
+# local database settings (contains your password)
+config.yaml
+# input data, caches and raw pipeline outputs (created by run_replication.py)
+work/
+# Python
+__pycache__/
+*.pyc
+.venv/
