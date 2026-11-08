@@ -1,0 +1,7 @@
+/data/
+/.idea/
+*.pyc
+*.csv
+/perf/
+/output_final/
+/output_intermediate/
