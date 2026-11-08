@@ -1,0 +1,55 @@
+dataset_name: "BPIC17"
+intermediate_output_directory: "output_intermediate"
+final_output_directory: "output_final"
+
+# Task cluster settings
+min_variant_freq: 10
+num_clusters: 21
+cluster_min_variant_length: 2
+manual_clusters: { "m01": [ 1, 25, 107, 139, 175, 186, 188, 192, 273, 297, 346, 350 ],
+                   "m02": [ 2, 57, 87, 129, 180, 212, 217, 218, 327, 385 ],
+                   "m03": [ 3, 33, 124, 138, 165, 194, 195, 215, 222, 241, 272, 315, 317, 319, 361 ],
+                   "m04": [ 7, 9, 45, 65, 150, 160, 228, 229, 233, 240, 269, 281, 328 ],
+                   "m05": [ 20 ],
+                   "m06": [ 50, 78, 145, 196 ],
+                   "m07": [ 56, 271, 197, 382 ] }
+cluster_include_remainder: true
+leftover_cluster: "T05"
+clustering_description: "F10_C21_L2_M_R"
+
+# Concept drift detection settings
+window_sizes: [ 1 ]
+penalties: [ 2, 3, 4 ]
+process_drift_feature_sets: { task_relative: [ "count_per_task_relative" ],
+                              task_variant_relative: [ "count_per_task_variant_relative" ],
+                              activity_relative: [ "count_per_activity_relative" ],
+                              activity_handover_case_relative: [ "count_per_activity_handover_case_relative" ] }
+actor_drift_feature_sets: { tasks_relative: ["count_per_task_relative"] }
+#actor_drift_feature_sets: { task_handover_actor_relative: ["count_per_task_handover_actor_relative"] }
+min_actor_frequency: 500
+min_collab_frequency: 300
+
+# Concept drift evaluation settings
+
+# --- Comparing collab/actor perspective to process level drift (pc)
+comp_window_size: 1
+comp_feature_set_name_process_level: "task_relative"
+comp_process_drift_penalty: 3
+comp_subgroup_to_compare: "actor"
+comp_subgroup_feature_set_name: "tasks_relative"
+#comp_subgroup_to_compare: "collab"
+#comp_subgroup_feature_set_name: "task_handovers_case"
+comp_subgroup_drift_penalty: 4
+
+# --- Calculate signal magnitude (mc)
+mc_window_size: 1
+mc_penalty: 3
+
+# --- Detailed comparison
+dc_penalty: 3
+dc_task_dict: { 1: [ "m04", "T03", "T07" ],
+                2: [ "m01", "m03", "m04", "T01", "T02", "T11" ],
+                3: [ "m02", "m04", "m05" ],
+                4: [ "m05", "T11" ] }
+dc_variant_dict: { 2: [ 4, 6, 8, 13 ],
+                   3: [ 4, 27, 12, 43 ] }

@@ -1,0 +1,23 @@
+# Database configuration for run_replication.py.
+# Copy this file to config.yaml (git-ignored) and fill in the settings of your own Neo4j DBMS.
+# Same keys as authors_code/config.yaml; the two json paths are relative to this folder.
+
+# Database credentials and information
+db_name: "neo4j"
+uri: "neo4j://127.0.0.1:7687"
+user: "neo4j"
+password: "<your Neo4j password>"
+
+# Dataset information
+dataset_name: "BPIC17"
+semantic_header_path: "authors_code/json_files/BPIC17.json"
+dataset_description_path: "authors_code/json_files/BPIC17_DS.json"
+use_sample: false
+
+# Import settings
+verbose: false
+batch_size: 25000
+use_preprocessed_files: false
+
+# Import directory of your Neo4j DBMS (Neo4j Desktop: ... > Open folder > Import)
+import_directory: "C:/path/to/your/neo4j/dbms/import"
